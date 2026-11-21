@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Electric Blue Frame -->
+    <path
+        android:pathData="M36,28 L72,28 C76.4,28 80,31.6 80,36 L80,72 C80,76.4 76.4,80 72,80 L36,80 C31.6,80 28,76.4 28,72 L28,36 C28,31.6 31.6,28 36,28 Z"
+        android:strokeWidth="3.5"
+        android:strokeColor="#2979FF" />
+    <!-- Upward Swipe Chevron -->
+    <path
+        android:pathData="M42,54 L54,41 L66,54"
+        android:strokeWidth="5"
+        android:strokeColor="#38BDF8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- Secondary Trailing Swipe Chevron -->
+    <path
+        android:pathData="M45,67 L54,57 L63,67"
+        android:strokeWidth="4"
+        android:strokeColor="#2979FF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

@@ -1,0 +1,6 @@
+{
+  "name": "AutoSwipe AI",
+  "description": "Native Android Kotlin & Jetpack Compose accessibility-based short-video auto-scrolling engine",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

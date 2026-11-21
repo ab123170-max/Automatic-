@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoSwipe AI</string>
+    <string name="accessibility_service_label">AutoSwipe AI Engine</string>
+    <string name="accessibility_service_description">Monitors supported short-video apps for genuine video-end UI signals (such as Replay buttons, end overlays, or completed progress bars) and performs a single upward swipe only when you activate auto-scrolling. Never records screens, captures passwords, or runs in unrelated apps.</string>
+    <string name="notification_channel_name">AutoSwipe Engine Status</string>
+    <string name="notification_channel_desc">Persistent status and emergency stop controls while automatic video scrolling is active.</string>
+</resources>
