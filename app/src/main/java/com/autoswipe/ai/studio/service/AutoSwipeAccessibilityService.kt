@@ -27,6 +27,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.isActive
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
 
@@ -37,6 +38,7 @@ class AutoSwipeAccessibilityService : AccessibilityService() {
     private val isDispatchingGesture = AtomicBoolean(false)
 
     private var pendingSwipeJob: Job? = null
+    private var monitoringJob: Job? = null
     private var lastProcessedEventMs: Long = 0L
     private var currentForegroundPackage: String? = null
 
@@ -94,6 +96,16 @@ class AutoSwipeAccessibilityService : AccessibilityService() {
 
         coordinator.onAccessibilityConnected()
         triggerReEvaluation()
+
+        // Poll because some short-video apps expose end controls without
+        // sending a fresh accessibility event when playback finishes.
+        monitoringJob?.cancel()
+        monitoringJob = serviceScope.launch {
+            while (isActive) {
+                delay(500L)
+                evaluateCurrentWindow(System.currentTimeMillis())
+            }
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -489,6 +501,8 @@ class AutoSwipeAccessibilityService : AccessibilityService() {
 
     override fun onDestroy() {
         cancelPendingSwipe()
+        monitoringJob?.cancel()
+        monitoringJob = null
         try {
             unregisterReceiver(screenReceiver)
         } catch (_: Exception) {
